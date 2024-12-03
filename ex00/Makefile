@@ -1,25 +1,26 @@
-NAME    = zombie
+# Compiler
+CXX = g++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CC      = c++
-CFLAGS  = -Wall -Wextra -Werror -std=c++98
+# Executable
+NAME = zombie
 
-SRC     = zombie.cpp 
-OBJ     = $(SRC:.cpp=.o)
+# Source Files
+SRCS = main.cpp zombie.cpp newZombie.cpp randomChump.cpp
 
+# Object Files
+OBJS = $(SRCS:.cpp=.o)
+
+# Build Rules
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $@
-
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
-re:	fclean all
-
-.PHONY: all re clean fclean
+re: fclean all
