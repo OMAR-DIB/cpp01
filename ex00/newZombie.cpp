@@ -6,10 +6,10 @@ Zombie* newZombie( std::string name )
 }
 Zombie* zombieHorde( int N, std::string name )
 {
+	Zombie* horder = new Zombie[N];
 	for (int i =0 ; i< N;i++)
 	{
-		
-		newZombie(name);
-		announce(name)
+		new (&horder[i]) Zombie(name);
 	}
+	return horder;
 }
